@@ -36,6 +36,7 @@ public class SimonSays extends KeyAdapter {
 	// 1. Declare a JFrame variable
 	JFrame frame = new JFrame();
 
+	@SuppressWarnings("deprecation")
 	public void run() {
 		// 2. Add the four images that match keyboard keys like this:
 		images.put(new Integer(KeyEvent.VK_UP), "up.jpg");
