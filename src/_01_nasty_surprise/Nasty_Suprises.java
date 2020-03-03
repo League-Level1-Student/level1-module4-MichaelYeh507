@@ -3,8 +3,8 @@ package _01_nasty_surprise;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.MalformedURLException;
+import java.net.URL;
 
-import javax.print.DocFlavor.URL;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -32,7 +32,9 @@ public class Nasty_Suprises implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == trick) {
-			
+			showPictureFromTheInternet("https://lh3.googleusercontent.com/proxy/vvQHeFgMyp8pfKBVrvipZaXl-kFltW1ceFzRqeRI22zX3ExZ2yfoErIIUlSzJJ5p241Wtm4mA_7EJOjxHJkyCXiQj7vN-XnSyzkXB9uJ3K--mGYRQUb6BJQ61w");
+		} else if (e.getSource() == treat) {
+			showPictureFromTheInternet("https://media.gettyimages.com/photos/path-through-a-misty-forest-during-a-foggy-winter-day-picture-id870867476?s=612x612");
 		}
 	}
 	
