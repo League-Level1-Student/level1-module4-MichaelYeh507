@@ -34,7 +34,6 @@ import javax.swing.JPanel;
 public class Jeopardy implements ActionListener {
 	private JButton firstButton;
 	private JButton secondButton;
-	private JButton thirdButton, fourthButton;
 	private JPanel quizPanel;
 	private int score = 0;
 	private JLabel scoreBox = new JLabel("0");
@@ -61,7 +60,7 @@ public class Jeopardy implements ActionListener {
 		// 5. Add the quizPanel to the frame
 		frame.add(quizPanel);
 		// 6. Use the createButton method to set the value of firstButton
-		JButton firstButton = createButton("$100");
+		firstButton = createButton("$100");
 		// 7. Add the firstButton to the quizPanel
 		quizPanel.add(firstButton);
 		// 8. Write the code to complete the createButton() method below. Check that your
@@ -69,7 +68,7 @@ public class Jeopardy implements ActionListener {
 		
 		// 9. Use the secondButton variable to hold a button using the createButton
 		// method
-		JButton secondButton = createButton("$500");
+		secondButton = createButton("$500");
 		// 10. Add the secondButton to the quizPanel
 		quizPanel.add(secondButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
@@ -108,7 +107,7 @@ public class Jeopardy implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		// Remove this temporary message after testing:
-
+		System.out.println("hi");
 		JButton buttonPressed = (JButton) e.getSource();
 		// If the buttonPressed was the firstButton
 		if (buttonPressed == firstButton) {
@@ -143,7 +142,7 @@ public class Jeopardy implements ActionListener {
 			score += prizeMoney;
 			JOptionPane.showMessageDialog(null, "You are correct.");
 		} else {
-			score -+ prizeMoney;
+			score -= prizeMoney;
 			JOptionPane.showMessageDialog(null, "You had the wrong answer");
 		}
 		updateScore();
