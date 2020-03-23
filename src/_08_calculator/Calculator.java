@@ -15,8 +15,8 @@ public class Calculator implements ActionListener {
 	void add(int x, int y){
 		System.out.println(x += y);
 	}
-	void subtract() {
-		System.out.println(firstInt -= secondInt);
+	void subtract(int x,int y) {
+		System.out.println(x -= y);
 	}
 	void multiply(int x, int y) {
 		System.out.println(x * y);
@@ -54,9 +54,18 @@ public class Calculator implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		firstInt.getText();
+		String leftInt = firstInt.getText();
+		int leftNumber = Integer.parseInt(leftInt);
+		String rightInt = secondInt.getText();
+		int rightNumber = Integer.parseInt(rightInt);
 		if (e.getSource() == add) {
-			
+			add(leftNumber, rightNumber);
+		} else if (e.getSource() == sub) {
+			subtract(leftNumber, rightNumber);
+		}else if (e.getSource() == mul) {
+			multiply(leftNumber, rightNumber);
+		} else if (e.getSource() == div) {
+			divide(leftNumber, rightNumber);
 		}
 	}
 }
