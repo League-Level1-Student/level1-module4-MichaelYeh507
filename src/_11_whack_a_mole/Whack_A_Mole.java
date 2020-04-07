@@ -2,6 +2,8 @@ package _11_whack_a_mole;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Date;
 import java.util.Random;
 
@@ -10,7 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class Whack_A_Mole implements ActionListener {
+public class Whack_A_Mole implements MouseListener {
+	int number = 0;
 	JPanel panel = new JPanel();
 	JFrame frame = new JFrame();
 	JButton mole = new JButton();
@@ -22,36 +25,58 @@ public class Whack_A_Mole implements ActionListener {
 	if (timeStarted == null) {
 		timeStarted = new Date();
 	}
+	frame.remove(panel);
 	frame.setVisible(true);
 	panel = new JPanel();
 	drawButtons();
 	frame.add(panel);
 	frame.pack();
-	
+	frame.repaint();
 	}
 	
 	public void drawButtons(){
+		System.out.println(number);
 		Random rand = new Random();
 		int num = rand.nextInt(24);
 		for(int i = 0; i < 24; i++) {
 			JButton button = new JButton();
+			button.setText("" + i);
 			if (i == num) {
 				mole = button;
 				button.setText("mole!");
 			}
-			button.addActionListener(this);
+			button.addMouseListener(this);
 			panel.add(button);
 		}
 	}
 
+	
+	
+//	void speak(String words) { 
+//	    try { 
+//	        Runtime.getRuntime().exec("say " + words).waitFor();
+//	    } catch (Exception e) {
+//	        e.printStackTrace();
+//	    }
+//	}
+	
+	private void endGame(Date timeAtStart, int molesWhacked) { 
+	    Date timeAtEnd = new Date();
+	    JOptionPane.showMessageDialog(null, "Your whack rate is "
+	            + ((timeAtEnd.getTime() - timeAtStart.getTime()) / 1000.00 / molesWhacked)
+	                  + " moles per second.");
+	}
+
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		molesWhacked++;
 		if (e.getSource().equals(mole)) {
 			System.out.println("yah");
+		} else {
 			molesMissed++;
 		} 
+		
 		if (molesWhacked == 10) {
 			endGame(timeStarted, molesWhacked);
 		}
@@ -67,22 +92,32 @@ public class Whack_A_Mole implements ActionListener {
 			System.exit(0);
 		}
 		frame.dispose();
+		number++;
 		run();
 	}
-	
-//	void speak(String words) { 
-//	    try { 
-//	        Runtime.getRuntime().exec("say " + words).waitFor();
-//	    } catch (Exception e) {
-//	        e.printStackTrace();
-//	    }
-//	}
-	
-	private void endGame(Date timeAtStart, int molesWhacked) { 
-	    Date timeAtEnd = new Date();
-	    JOptionPane.showMessageDialog(null, "Your whack rate is "
-	            + ((timeAtEnd.getTime() - timeAtStart.getTime()) / 1000.00 / molesWhacked)
-	                  + " moles per second.");
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
 
