@@ -31,9 +31,9 @@ public class Slot_Machine implements ActionListener {
 			makeLabels();	
 			System.out.println("labels");
 		}
-		frame.pack();
+		frame.pack();a
 	}
-	
+	 
 	private JLabel createLabelImage(String fileName){
         URL imageURL = getClass().getResource(fileName);
 	if (imageURL == null){
